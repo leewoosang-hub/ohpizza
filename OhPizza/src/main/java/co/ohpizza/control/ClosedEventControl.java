@@ -12,9 +12,7 @@ public class ClosedEventControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String closeeventimg = req.getParameter("closeeventimg");
-		req.setAttribute("closeeventimg", closeeventimg);
-		req.getRequestDispatcher("product/ClosedEvent.tiles").forward(req, resp);
+		req.getRequestDispatcher("event/closedEvent.tiles").forward(req, resp);
 
 	}
 

@@ -26,9 +26,14 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public MemberVO loginCheck(String id, String pw) {
-		return mapper.selectMember(id, pw);
+		return mapper.checkMember(id, pw);
 	}
 
+	@Override
+	public String getPassword(MemberVO mvo) {
+		return mapper.findPass(mvo);
+	}
+	
 	// 회원가입
 	@Override
 	public boolean newMember(MemberVO mvo) {
@@ -42,10 +47,19 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.selectId(id) == 0;
 	}
 
-	public boolean modMember(String id) {
-		// TODO Auto-generated method stub
-		return false;
+	@Override
+	public MemberVO showMember(String id) {
+		return mapper.selectMember(id);
+	}
+	
+	public boolean modMember(MemberVO mvo) {
+		return mapper.updateMember(mvo) == 1;
 	}
 
+	@Override
+	public MemberVO infoMember(String id) {
+		// TODO Auto-generated method stub
+		return mapper.infoMember(id);
+	}
   
 }

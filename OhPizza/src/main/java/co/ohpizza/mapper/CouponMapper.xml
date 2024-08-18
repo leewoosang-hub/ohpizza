@@ -4,26 +4,48 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.ohpizza.mapper.CouponMapper">
 
+	<insert id="insertMemCoupon" parameterType="co.ohpizza.vo.MemCouponVO">
+		insert into tbl_mem_coupon (MEM_ID, COUPON_NAME)
+		values (#{memId}, #{couponName})
+	</insert>
+
+	<select id="duplicateCoupon" parameterType="string" resultType="int">
+		SELECT count(1)
+		FROM tbl_mem_coupon
+		WHERE mem_id = #{mem_id} and coupon_name = #{coupon_name}
+	</select>
+  
+  <!-- 쿠폰 전체 목록 (Admin) -->	
+  <select id="selectCoupons" resultType="co.ohpizza.vo.CouponVO">
+    select *
+    from tbl_coupon
+    order by coupon_name
+  </select>
+  
+  <!-- 쿠폰 삭제 (Admin) -->
+  <delete id="removeCoupon" parameterType="string">
+    delete tbl_coupon
+    where coupon_name = #{name}
+  </delete>
+  
+  <!-- 쿠폰 등록 (Admin) -->
+  <insert id="insertCoupon" parameterType="co.ohpizza.vo.CouponVO">
+  	insert into tbl_coupon (coupon_name, discount)
+  	values (#{couponName}, #{discount})
+  </insert>
+  
+  <!-- 쿠폰 할인율 -->
   <select id="selectCoupon" parameterType="string" resultType="string">
     select discount
     from tbl_coupon
     where coupon_name = #{couponNm}
   </select>
   
+  <!-- 회원 보유 쿠폰 -->
   <select id="memberCouponList" parameterType="string" resultType="string">
   	select coupon_name
   	from tbl_mem_coupon
   	where mem_id = #{id}
   </select>
-  
-  <insert id="insertCoupon" parameterType="co.ohpizza.vo.CouponVO">
-  	insert into tbl_coupon (coupon_name, discount)
-  	values (#{couponName}, #{discount})
-  </insert>
-  
-  <insert id="insertMemCoupon" parameterType="co.ohpizza.vo.MemCouponVO">
-  	insert into tbl_mem_coupon (MEM_ID, COUPON_NAME)
-  	values (#{memId}, #{couponName}) 	
-  </insert>
   
 </mapper>

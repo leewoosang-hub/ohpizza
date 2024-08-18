@@ -22,14 +22,24 @@
 		where mem_id = #{id}
 	</delete>
 	
-	<select id="selectMember" parameterType="string"
+	<!-- 로그인 체크 -->
+	<select id="checkMember" parameterType="string"
 		resultType="co.ohpizza.vo.MemberVO">
 		select *
 		from tbl_member
 		where mem_id = #{id}
 		and mem_pw = #{pw}
 	</select>
-
+	
+	<!-- 비빌번호 찾기 -->
+	<select id="findPass" parameterType="co.ohpizza.vo.MemberVO" resultType="string">
+		select mem_pw
+		from tbl_member
+		where mem_id = #{memId}
+		and mem_name = #{memName}
+		and email = #{email}
+	</select>
+	
 	<!-- 회원가입 -->
 	<insert id="insertMember" parameterType="co.ohpizza.vo.MemberVO">
 		insert into TBL_MEMBER(
@@ -55,15 +65,28 @@
 		where mem_id = #{MEM_ID}
 	</select>
 	
+	<!-- 정보 확인 -->
+	<select id="selectMember" parameterType="string" resultType="co.ohpizza.vo.MemberVO">
+		select *
+		from tbl_member
+		where mem_id = #{id}
+	</select>
+	
 	<!-- 정보변경 -->
 	<update id="updateMember" parameterType="co.ohpizza.vo.MemberVO">
 		update tbl_member
-		set mem_name = #{name},
-		set mem_pw = #{password},
-		set phone = #{phone},
-		set email = #{email},
-		set address = #{address}
-		where mem_id = #{id}
+		set mem_name = #{memName},
+		    mem_pw = #{memPw},
+		    phone = #{phone},
+		    email = #{email},
+		    address = #{address}
+		where mem_id = #{memId}
 	</update>
+	
+	<select id="infoMember" parameterType="string" resultType="co.ohpizza.vo.MemberVO">
+		select *
+		from tbl_member
+		where mem_id = #{MEM_ID}
+	</select>
 
 </mapper>

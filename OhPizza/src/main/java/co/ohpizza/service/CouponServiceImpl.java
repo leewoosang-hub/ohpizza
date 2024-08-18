@@ -14,6 +14,21 @@ public class CouponServiceImpl implements CouponService {
 	CouponMapper mapper = (CouponMapper) sqlSession.getMapper(CouponMapper.class);
 
 	@Override
+	public List<CouponVO> couponList() {
+		return mapper.selectCoupons();
+	}
+	
+	@Override
+	public boolean delCoupon(String name) {
+		return mapper.removeCoupon(name) == 1;
+	}
+	
+	@Override
+	public boolean addCoupon(CouponVO coupon) {
+		return mapper.insertCoupon(coupon) == 1;
+	}
+	
+	@Override
 	public String getCoupon(String couponNm) {
 		return mapper.selectCoupon(couponNm);
 	}
@@ -24,13 +39,14 @@ public class CouponServiceImpl implements CouponService {
 	}
 
 	@Override
-	public boolean addCoupon(CouponVO coupon) {
-		return mapper.insertCoupon(coupon) == 1;
-	}
-
-	@Override
 	public boolean addMemCoupon(MemCouponVO mcvo) {
 		return mapper.insertMemCoupon(mcvo) == 1;
 	}
 
+	@Override
+	public int duplicateCoupon(String memId, String couponName) {
+		return mapper.duplicateCoupon(memId, couponName);
+	}
+
+	
 }

@@ -1,0 +1,51 @@
+#quickmenu {
+	padding: 18px 0;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	color: #8c8c8c;
+	width: 80px;
+	position: relative;
+	list-style-type: none;
+}
+
+#quickmenu {
+	position: fixed;
+	top: 50%;
+	right: 0;
+	z-index: 1;
+	margin-top: -177.5px
+}
+
+#quickmenu a {
+	display: block;
+	padding: 18px 0;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	color: #8c8c8c;
+	width: 80px;
+	position: relative;
+	text-decoration-line: none;
+}
+
+#quickmenu li {
+	border-top: #dbdbdb 1px solid;
+}
+
+#quickmenu li:hover {
+	margin-left: -50%;
+	color: 000;
+}
+
+#quickmenu li:first-child {
+	background-color:#dbdbdb;
+}
+
+#quickmenu li:nth-child(2) {
+	background-color:#dbdbdb;
+}
+
+#quickmenu li:nth-child(3) {
+	background-color:#dbdbdb;
+}

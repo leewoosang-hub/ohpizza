@@ -12,6 +12,7 @@ public class BoardFormControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setCharacterEncoding("UTF-8");
 		req.getRequestDispatcher("board/boardForm.tiles")//
 		.forward(req, resp);
 		//글쓰기 폼으로 이동하는 기능

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import co.ohpizza.common.AlertControl;
 import co.ohpizza.common.Control;
 import co.ohpizza.service.MemberService;
 import co.ohpizza.service.MemberServiceImpl;
@@ -20,13 +21,13 @@ public class LoginCheckControl implements Control {
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
 
-		MemberService svc = new MemberServiceImpl();
-		MemberVO mvo = svc.loginCheck(id, pw);
+		MemberService msv = new MemberServiceImpl();
+		MemberVO mvo = msv.loginCheck(id, pw);
 
 		if(mvo == null) {
-			// 메세지를 "아이디와 비밀번호를 확인하세요!"
-			req.setAttribute("msg", "아이디와 비밀번호를 확인하세요!");
-			req.getRequestDispatcher("account/login.tiles").forward(req, resp);
+			String msg = "아이디와 비밀번호를 확인하세요!";
+			String url = "login.do";
+			AlertControl.alertAndGo(resp, msg, url);
 			return;
 		}
 		
@@ -35,17 +36,16 @@ public class LoginCheckControl implements Control {
 		session.setAttribute("logId", id); // logId에 id값을 담음
 		session.setMaxInactiveInterval(30 * 60); // 30분
 		if(mvo.getAuthority().equals("User")) {
-			resp.sendRedirect("productList.do");
+			resp.sendRedirect("index.jsp");
 		}
 		else if(mvo.getAuthority().equals("Admin")) {
 			resp.sendRedirect("memberList.do");
 		}
 		else {
-			System.out.println("권한을 지정하세요!");
+			String msg = "권한을 지정하세요!";
+			AlertControl.alert(resp, msg);
 		}
 		
-//		req.getRequestDispatcher("product/productList.tiles").forward(req, resp);
-
 	}
 
 }

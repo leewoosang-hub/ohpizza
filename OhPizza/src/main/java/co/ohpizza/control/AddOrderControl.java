@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.ohpizza.common.AlertControl;
 import co.ohpizza.common.Control;
 import co.ohpizza.service.OrderListService;
 import co.ohpizza.service.OrderListServiceImpl;
@@ -38,7 +39,7 @@ public class AddOrderControl implements Control {
 		
 		int fullPrice = 0;
 		
-		
+		String msg = "장바구니 담기 완료";
 		
 		
 		
@@ -56,14 +57,25 @@ public class AddOrderControl implements Control {
 			}
 			osvc.priceOrder(fullPrice, ordNo);
 			
-			resp.sendRedirect("productList.do");
+//			resp.sendRedirect("productList.do");
+			AlertControl.alertAndBack(resp, msg);
 		} else {
 		// 해당 id의 주문상태가 c인 order가 없을 경우
 			osvc.addOrder(memId);
 			int ordNo = osvc.selectOrder(memId).getOrdNo();
 			olsvc.addOrderList(Integer.toString(ordNo), prodNo, cnt, price, prodName);
 			
-			resp.sendRedirect("productList.do");
+			List<OrderlistVO> oList = olsvc.selectOrderListL(ordNo);
+			for(OrderlistVO o: oList) {
+				System.out.println(o.getCount() +"  " + o.getProdPrice());
+				int a = o.getCount()*o.getProdPrice();				
+				fullPrice += a;
+				System.out.println(fullPrice);
+			}
+			osvc.priceOrder(fullPrice, ordNo);
+			
+//			resp.sendRedirect("productList.do");
+			AlertControl.alertAndBack(resp, msg);
 		}
 		
 	}

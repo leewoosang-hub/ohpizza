@@ -7,11 +7,13 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.google.gson.Gson;
 
+import co.ohpizza.common.AlertControl;
 import co.ohpizza.common.Control;
 import co.ohpizza.common.DataSource;
 import co.ohpizza.mapper.MemberMapper;
@@ -46,13 +48,20 @@ public class CreateMemberControl implements Control {
 		mvo.setAddress(address);
 		mvo.setAuthority("User");
 		// mapper. 안에 있는 insertMember 매소드호출하는데 매개변수가 있어서 mvo () 넣은것.
-
-    if (mapper.insertMember(mvo) == 1) {
-			resp.sendRedirect("productList.do");// 회원가입 될 경우 리스트로 이동
+		
+		String msg = null;
+		String url = "index.jsp";
+		if (mapper.insertMember(mvo) == 1) {
+			HttpSession session = req.getSession();
+			session.setAttribute("logId", loginId); // logId에 id값을 담음
+			session.setMaxInactiveInterval(30 * 60); // 30분
+			msg = "회원이 되신걸 환영합니다!!";
+			AlertControl.alertAndGo(resp, msg, url);
 		} else {
-			resp.sendRedirect("addMember.do"); // 회원가입 실패 할 경우 회원가입 이동
+			msg = "가입 양식을 다시 확인 바랍니다!";
+			url = "addMember.do"; // 회원가입 실패 할 경우 회원가입 이동
+			
 		}
-
 	
 	}
 

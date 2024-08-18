@@ -34,4 +34,33 @@
    set price = #{price}
    where ord_no = #{ordNo}
   </update>
+  
+  <insert id="addPOrder" parameterType="co.ohpizza.vo.OrderVO">
+    <selectKey keyProperty="ordNo" order="BEFORE" resultType="int">
+      select order_seq.nextVal from dual
+    </selectKey>
+  	insert into tbl_order(ord_no, mem_id, ord_stat, price)
+  	values (#{ordNo}, #{memId}, 'P', #{price})
+  </insert>
+  
+	<select id="selectPOrder" parameterType="string" resultType="co.ohpizza.vo.OrderVO">
+    select *
+    from tbl_order
+    where mem_id = #{memId}
+    and ord_stat = 'P'
+  </select>
+  
+  <update id="updateOrder" parameterType="int">
+   update tbl_order
+   set ord_stat = 'E'
+   where ord_no = #{ordNo}
+  </update>
+  
+  <select id="orderEList" parameterType="string" resultType="co.ohpizza.vo.OrderVO">
+    select *
+    from tbl_order
+    where mem_id = #{memId}
+    and ord_stat = 'E'
+    order by ord_no 
+  </select>
 </mapper>

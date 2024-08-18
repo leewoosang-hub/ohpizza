@@ -13,7 +13,7 @@ display: none;
 body{
     font-family: 'Noto Sans KR', sans-serif;
     font-size:14px;
-    background-color: #f5f6f7;
+    background-color: #fff;
     line-height: 1.5em;
     color : #222;
     margin: 0;
@@ -60,7 +60,7 @@ a{
 
 .joinForm input[type=button],
 .joinForm input[type=submit]{
-background-color: #000000;
+background-color:rgb(220 53 69);
 color:#fff
 }
 

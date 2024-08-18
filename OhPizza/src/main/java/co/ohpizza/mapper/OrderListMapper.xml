@@ -25,4 +25,22 @@
 		delete tbl_orderlist
 		where list_no = #{listNo}
 	</delete>
+	
+	<update id="modifyOlcnt" parameterType="int">
+		update tbl_orderlist
+		set count = ${count}
+		where list_No = ${listNo}
+	</update>
+	
+	<select id="selectOrderList" parameterType="int" resultType="co.ohpizza.vo.OrderlistVO">
+		select *
+		from tbl_orderlist
+		where list_no = ${listNo}
+	</select>
+	
+	<update id="updateOrderList" parameterType="int">
+			update tbl_orderlist
+			set ord_No = #{ordNo}
+			where list_No = #{listNo}
+	</update>
 </mapper>

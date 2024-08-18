@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.ohpizza.mapper.StoreMapper">
+
+  <select id="selectStore" resultType="co.ohpizza.vo.StoreVO">
+    select *
+    from tbl_store
+    order by store_name
+  </select>
+  
+  <delete id="deleteStore" parameterType="string">
+    delete tbl_store
+    where store_name = #{name}
+  </delete>
+  
+  <insert id="insertStore" parameterType="co.ohpizza.vo.StoreVO">
+    insert into tbl_store (store_name, address, phone, loc_name, latitude, longitude)
+    values (#{storeName}, #{address}, #{phone}, #{locName}, #{latitude}, #{longitude})
+  </insert>
+
+</mapper>

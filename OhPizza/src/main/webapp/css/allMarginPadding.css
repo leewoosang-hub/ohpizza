@@ -1,0 +1,17 @@
+/*
+allMarhinPadding.css
+바디 가운데 정렬
+*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.box {
+  width: 80%;
+  margin: auto;
+  padding: 30px;
+}

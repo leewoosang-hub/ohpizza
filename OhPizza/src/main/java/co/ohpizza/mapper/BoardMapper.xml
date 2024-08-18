@@ -4,32 +4,51 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.ohpizza.mapper.BoardMapper">
 
-	<select id="boardList" resultType="co.ohpizza.vo.BoardVO">
-		select b.*
+	<select id="boardList" parameterType="String">
+		select  *
 		from (select rownum rn, a.*
 		from (select *
 		from tbl_board
+		where board_type = 'R'
 		order by board_no desc ) a ) b
 		where b.rn > (#{page} - 1) * 5
     <![CDATA[
     and   b.rn <= (#{page} * 5)	    
     ]]>
 	</select>
-
-	<select id="inquiryList" resultType="co.ohpizza.vo.BoardVO">
-		select board_title,
-		board_view,
-		complaint,
-		answer,
-		trunc(board_date, 'Day'),
-		mem_id
-		from tbl_board
-		where mem_id = #{memId}
+	
+  <select id="inquiryList">
+	select  *
+	  from (select rownum rn, a.*
+	  from (select *
+	  from tbl_board
+      where board_type = 'Q'
+	  order by board_no desc ) a ) b
+	  where b.rn > (#{page} - 1) * 5
+    <![CDATA[
+      and   b.rn <= (#{page} * 5)	    
+    ]]>
+      and mem_id = #{memId}
+      order by board_date DESC
 	</select>
 
 	<select id="totalPage" resultType="int">
 		select count(1)
 		from tbl_board
+		where board_type = 'R'
+	</select>
+	
+	<select id="inquirypage" resultType="int" parameterType="string">
+	    select count(1)
+		from tbl_board
+		where mem_id = #{memId}
+		and board_type = 'Q'
+	</select>
+	
+	<select id="totalCntTypeC" parameterType="int">
+	select count(1)
+	from tbl_board
+     where board_type = 'Q'
 	</select>
 
 	<select id="boardDetail" resultType="co.ohpizza.vo.BoardVO">
@@ -43,5 +62,48 @@
 		insert into tbl_board (board_no, BOARD_TITLE, review, mem_id)
 		VALUES                (BOARD_SEQ.nextval, #{boardTitle}, #{review}, #{memId})
 	</insert>
+	
+	<delete id="removeBoard" parameterType="int">
+		delete 
+        from tbl_board
+        where board_no = ${boardNo}
+	</delete>
+	
+	<update id="viewIncrease" parameterType="int">
+	UPDATE tbl_board 
+	set board_view = board_view + 1
+	where board_no = ${board_no}
+	</update>
+	
+	<insert id="insertInquiry" parameterType="co.ohpizza.vo.BoardVO">
+		insert into tbl_board (board_no, board_title, question, board_type, mem_id)
+		values (board_seq.nextval, #{boardTitle}, #{question}, 'Q', #{memId})
+	</insert>
+	
+	<select id="adminAnswerList" resultType="co.ohpizza.vo.BoardVO">
+		select  *
+	  from (select rownum rn, a.*
+	  from (select *
+	  from tbl_board
+      where board_type = 'Q'
+	  order by board_no desc ) a ) b
+	  where b.rn > (#{page} - 1) * 5
+    <![CDATA[
+      and   b.rn <= (#{page} * 5)	    
+    ]]>
+      order by board_date DESC
+	</select>
+	
+	<update id="adminAnswer" parameterType="co.ohpizza.vo.BoardVO">
+	update tbl_board
+	set answer = #{answer}
+	where board_no = #{boardNo}
+	</update>
+	
+	<select id="selectQuestion" parameterType="int" resultType="co.ohpizza.vo.BoardVO">
+	  select *
+	  from tbl_board
+	  where board_no = #{bno}	  
+	</select>
 
 </mapper>
