@@ -98,21 +98,18 @@ public class FrontController extends HttpServlet {
 		// 유저 쿠폰 발급
 		map.put("/addMemCoupon.do", new AddMemCouponControl());
 		
-		
-		// 게시판
-		map.put("/boardList.do", new BoardListControl());
-
 		// 진행중인 이벤트 (쿠폰 발행 이벤트)
 		map.put("/eventsProgress.do", new EventsProgress());
 
+		// 게시판 //
 		// 게시판 리스트
 		map.put("/boardList.do", new BoardListControl());
 		//게시물 상세 페이지
 		map.put("/boardDetail.do", new BoardDetailControl());
-		//게시글 쓰는 폼
-		map.put("/boardForm.do",new BoardFormControl());
 		//게시글 쓰기
 		map.put("/addBoard.do", new AddBoardControl());
+		//게시글 쓰는 폼
+		map.put("/boardForm.do",new BoardFormControl());
 		
 		// 나의오피
 		map.put("/myPage.do", new MypageControl());

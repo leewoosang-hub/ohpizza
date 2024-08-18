@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <h1>게시판 페이지</h1>
+<p>${pageOut }</p>
 <!-- body -->
 <!-- Sidebar -->
 	<a href="boardForm.do"><button class="btn btn-warning" type="submit">글쓰기</button></a>

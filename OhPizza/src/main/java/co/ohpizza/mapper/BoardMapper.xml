@@ -38,10 +38,10 @@
 		where
 		board_no = #{bno}
 	</select>
-
+	
 	<insert id="insertViewBoard" parameterType="co.ohpizza.vo.BoardVO">
-		insert into tbl_board(  board_no, board_title, review, mem_id)
-		VALUES         ( BOARD_SEQ.nextval, #{boardTitle}, #{review}, #{memId})
+		insert into tbl_board (board_no, BOARD_TITLE, review, mem_id)
+		VALUES                (BOARD_SEQ.nextval, #{boardTitle}, #{review}, #{memId})
 	</insert>
 
 </mapper>

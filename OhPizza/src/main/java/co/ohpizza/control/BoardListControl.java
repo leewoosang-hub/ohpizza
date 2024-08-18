@@ -34,12 +34,13 @@ public class BoardListControl implements Control {
 		int totalCnt = BoardServiceList.totalPage();
 		//pageDTO의 생성자에 넣어줄 매개변수
 		PageDTO pageDTO = new PageDTO(Integer.parseInt(page),totalCnt);
+		//System.out.println(totalCnt);
+		System.out.println(page);
 		//jsp에 넘겨줄 값
 		req.setAttribute("pageOut", pageDTO);
 		System.out.println(pageDTO);
 		//end 페이지//
 		
-	
 		req.getRequestDispatcher("board/boardList.tiles")//
 		.forward(req, resp);
 	}
