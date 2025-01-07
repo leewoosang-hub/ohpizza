@@ -36,21 +36,12 @@ public class AddBoardControl implements Control {
 
 		// System.out.println(boardService.insertViewBoard(boardVO));
 
-		if (boardService.insertViewBoard(boardVO)) {
 
-			BoardVO board = new BoardVO();
-			board.setBoardTitle(title);
-			board.setReview(review);
-			board.setMemId(id);
-
-			BoardService BoardService = new BoardServiceImpl();
-			// System.out.println(BoardService.insertViewBoard(board));
-
-			if (BoardService.insertViewBoard(board)) {
+			if (boardService.insertViewBoard(boardVO)) {
 				resp.sendRedirect("boardList.do");
 			} else {
 				resp.sendRedirect("boardForm.do");
 			}
 		}
 	}
-}
+

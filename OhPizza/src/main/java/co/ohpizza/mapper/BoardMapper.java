@@ -8,7 +8,7 @@ import co.ohpizza.vo.BoardVO;
 
 public interface BoardMapper {
 	//게시판 리스트 출력
-	List<BoardVO> boardList(String page);
+	List<BoardVO> boardList(@Param("page") String page);
 	
 	//페이지를 뽑기 위한 게시물 갯수 출력
 	int totalPage();
@@ -44,5 +44,7 @@ public interface BoardMapper {
 	
 	// 관리자 답변 화면에 가져오기
 	BoardVO selectQuestion(int bno);
+	
+	
 	
 }

@@ -2,6 +2,8 @@ package co.ohpizza.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import co.ohpizza.vo.BoardVO;
 
 public interface BoardService {
@@ -43,5 +45,6 @@ public interface BoardService {
 	
 	// 관리자용 질문에 대한 답변 화면용
 	BoardVO getQuestion(int bno);
+
 }
 

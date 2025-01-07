@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h1>게시판 페이지</h1>
-<p>${pageOut }</p>
+<!-- <p>${pageOut }</p> -->
 <!-- body -->
 
 <link href="css/allMarginPadding.css" rel="stylesheet">
@@ -30,7 +29,14 @@
 					<th scope="col">작성자</th>
 					<th scope="col">작성일</th>
 					<th scope="col">조회수</th>
-					<th scope="col">삭제</th>
+					<c:choose>
+						<c:when test="${logId != null}">
+					    <th scope="col">삭제</th>
+					    </c:when>
+					    <c:otherwise>
+					    <th scope="col">-</th>
+					    </c:otherwise>
+					</c:choose>
 				</tr>
 			</thead>
 			<tbody>
@@ -70,9 +76,18 @@
 			</tbody>
 		</table>
 	</div>
+<!-- <c:choose>
+		<c:when test="${null != logId }">
+			<a href="boardList.do?&memId=${logId}"><button class="btn"
+					type="submit">내 글만 보기</button></a>
+		</c:when>
+		<c:otherwise>
+			<button class="btn btn-warning" type="button"
+				onclick="alert('로그인 후 이용 가능한 기능입니다.')">내 글만 보기</button>
+		</c:otherwise>
+	</c:choose> -->	
 	<!-- end body -->
 	<!-- Sidebar -->
-	
 	
 	<!-- end Sidebar -->
 	<!-- pageNumbering -->

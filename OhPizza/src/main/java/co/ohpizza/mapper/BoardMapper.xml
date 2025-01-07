@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.ohpizza.mapper.BoardMapper">
 
-	<select id="boardList" parameterType="String">
+	<select id="boardList" parameterType="String" resultType="co.ohpizza.vo.BoardVO">
 		select  *
 		from (select rownum rn, a.*
 		from (select *
@@ -19,9 +19,9 @@
 	
   <select id="inquiryList">
 	select  *
-	  from (select rownum rn, a.*
-	  from (select *
-	  from tbl_board
+	        from (select rownum rn, a.*
+	        from (select *
+	        from tbl_board
       where board_type = 'Q'
 	  order by board_no desc ) a ) b
 	  where b.rn > (#{page} - 1) * 5

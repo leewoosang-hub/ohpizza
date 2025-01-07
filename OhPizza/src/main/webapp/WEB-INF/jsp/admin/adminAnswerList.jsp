@@ -15,7 +15,8 @@
 		<c:forEach var="adminList" items="${adminAnswerList }" varStatus="stat">
 			<tr>
 				<td>${adminList.boardDate() }</td>
-				<td><a href="adminAnswerList.do?pageNum=${adminList.boardNo }" style="text-decoration-line: none; color:black">${adminList.boardTitle }</a></td>
+				<td><a href="adminAnswerList.do?pageNum=${adminList.boardNo }" 
+					   style="text-decoration-line: none; color:black">${adminList.boardTitle }</a></td>
 				<td>${adminList.memId }</td>
 				<c:choose>
 				<c:when test="${adminList.answer == null }">

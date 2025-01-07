@@ -67,6 +67,7 @@ function priceCart() {
 		cartA.push(sCart.parentElement.children[1].value);
 	})
 	console.log(cartA);
+	console.log("aaaaaaaaaaaaaaaaaaaaaa");
 	cartA.value = cartA.join(",");
 	console.log(cartA);
 	console.log(lastPrice);
@@ -89,7 +90,6 @@ function checkCart() {
 
 
 	document.querySelectorAll(query).forEach((sCart) => {
-		console.log(sCart.parentElement.parentElement.children[4].innerHTML);
 		let price = Number(sCart.parentElement.parentElement.children[4].innerHTML);
 		allPrice += price;
 	})

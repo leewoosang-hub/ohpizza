@@ -126,28 +126,23 @@ public class FrontController extends HttpServlet {
 		// 종료된 이벤트
 		map.put("/closedEvent.do", new ClosedEventControl());
 		
-<<<<<<< HEAD
-		// 진행중인 이벤트 (쿠폰 발행 이벤트)
-		map.put("/eventsProgress.do", new EventsProgress());
 
-		// 게시판 //
-=======
+		// 진행중인 이벤트 (쿠폰 발행 이벤트)
+	//	map.put("/eventsProgress.do", new EventsProgress());
+
+
 		//게시판 기능
->>>>>>> branch 'main' of https://github.com/tisgold/ohpizza.git
 		// 게시판 리스트
 		map.put("/boardList.do", new BoardListControl());
 		//게시물 상세 페이지
 		map.put("/boardDetail.do", new BoardDetailControl());
 		//게시글 쓰기
 		map.put("/addBoard.do", new AddBoardControl());
-<<<<<<< HEAD
 		//게시글 쓰는 폼
 		map.put("/boardForm.do",new BoardFormControl());
-=======
 		//게시글 삭제
 		map.put("/removeBoard.do", new RemoveBoardControl());
 
->>>>>>> branch 'main' of https://github.com/tisgold/ohpizza.git
 		
 		// 나의오피
 		map.put("/myPage.do", new MypageControl());
@@ -172,15 +167,15 @@ public class FrontController extends HttpServlet {
 		// 멤버 리스트
 		map.put("/memberList.do", new MemberListControl());
 		// 멤버 삭제
-		map.put("/deleteMember.do", new DeleteMemberControl());
+	//	map.put("/deleteMember.do", new DeleteMemberControl());
 		// 쿠폰 리스트
 		map.put("/couponList.do", new CouponListControl());
 		// 쿠폰 삭제
 		map.put("/deleteCoupon.do", new DeleteCouponControl());
 		// 쿠폰 등록 화면
-		map.put("/addCoupon.do", new AddCouponControl());
+	//	map.put("/addCoupon.do", new AddCouponControl());
 		// 쿠폰 등록
-		map.put("/createCoupon.do", new CreateCouponControl());
+	//	map.put("/createCoupon.do", new CreateCouponControl());
 		//관리자용 문의 게시판 출력 기능
 		map.put("/adminAnswerList.do", new AdminAnswerListControl());
 		//관리자용 답변 추가 기능

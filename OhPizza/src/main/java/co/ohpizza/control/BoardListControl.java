@@ -20,14 +20,19 @@ public class BoardListControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8");
 		BoardService BoardServiceList = new BoardServiceImpl();
+		
 		//게시판 출력
 		//기본 페이지의 번호는 1번으로 한다.
 		String page = req.getParameter("pageNum");
 		page = page == null ? "1" : page;
+	//	String memId = req.getParameter("memId");
+	//	memId = memId == null ? "user01" : memId;
 		List<BoardVO> board = BoardServiceList.boardList(page);
 		req.setAttribute("boardList", board);
-		System.out.println(board);
+		//System.out.println(board);
 		//end 게시판 출력
+		
+		//
 		
 		//페이지//
 		//총 게시물 수를 구하기 위한 식
@@ -36,7 +41,7 @@ public class BoardListControl implements Control {
 
 //		PageDTO pageDTO = new PageDTO(Integer.parseInt(page),totalCnt,5);
 //		//System.out.println(totalCnt);
-		System.out.println(page);
+		//System.out.println(page);
 		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), totalCnt , 5);
 
 		//jsp에 넘겨줄 값

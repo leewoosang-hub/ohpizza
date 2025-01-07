@@ -12,7 +12,6 @@ function buy(){
 	let id = document.querySelector('input[name="id"]').value;
 	
 	document.querySelectorAll('input[name="listNo"]').forEach((listNo)=>{
-		console.log(listNo.value);
 		
 		listNoL.push(listNo.value);
 	})
