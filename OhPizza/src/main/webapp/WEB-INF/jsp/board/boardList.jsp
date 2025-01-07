@@ -115,6 +115,7 @@ boardTr.forEach((tr) => {
     console.log("test")
     
     
+    
   });
 });
 </script>
