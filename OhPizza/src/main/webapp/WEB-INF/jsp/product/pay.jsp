@@ -775,8 +775,7 @@
 	color: #fff;
 }
 </style>
-<style></style>
-<style></style>
+
 <style type="text/css">
 .IntroLayer-module_article__Metx6 {
 	padding: 40px 20px 20px;
@@ -842,162 +841,184 @@
 	{
 	margin-top: 20px;
 }
+.main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.ContentWrapper_article__1qahd {
+    margin-bottom: 20px;
+}
+
+h3.SectionHeader_title__27a8h {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.ProductDetail_name__19lwp {
+    font-weight: bold;
+    color: #1e88e5;
+    text-decoration: none;
+}
+
+.ProductPrice_total__Wiq2S {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #333;
+}
 </style>
 <link rel="stylesheet" type="text/css"
 	href="https://financial.pstatic.net/orders/ordersheet/d689069-real/static/css/65.b50cb429.chunk.css">
 <script charset="utf-8"
 	src="https://financial.pstatic.net/orders/ordersheet/d689069-real/static/js/65.b366bff9.chunk.js"></script>
 </head>
-
-
-
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 
-<div width=20px>
-<div class="DoubleTemplate_section-left__19C4I">
-	<div class="ContentSection_article__3a-7Z">
-		<div class="SectionHeader_article__4vJgn">
-			<div class="SectionHeader_inner__jljYc">
-				<h3 class="SectionHeader_title__27a8h">배송지</h3>
+<div class="main" width=20px>
+	<div class="DoubleTemplate_section-left__19C4I">
+		<div class="ContentSection_article__3a-7Z">
+			<div class="SectionHeader_article__4vJgn">
+				<div class="SectionHeader_inner__jljYc">
+					<h3 class="SectionHeader_title__27a8h">배송지</h3>
+				</div>
 			</div>
-		</div>
-		<div
-			class="ContentWrapper_article__1qahd ContentWrapper_bg-white__3zTOk">
-			<div class="DeliveryInfo_article__gSoBW">
-				<div class="DeliveryContent_article__32hL7">
-					<div class="DeliveryContent_inner__2xPj3">
-						<strong class="DeliveryContent_name__1kzyK"><span
-							class="blind">배송지명</span>${member.memName }(집)</strong>
-						<div class="DeliveryContent_area-phone__2jR07">
-							<div class="DeliveryContent_number__1sasU">
-								<span class="DeliveryContent_phone__2XnIr"><span
-									class="blind">연락처</span>${member.phone }</span>
-							</div>
-							<div class="DeliveryContent_checkbox__3p_Ky">
-								<div class="DeliveryContent_checkbox-inner__21gX3">
-									<span
-										class="Checkbox_article__1cp2Y icon-18 Checkbox_size-15__1AAHf Checkbox_weight-medium__L-KKf"><input
-										type="checkbox" id="phone" name="phone"
-										class="Checkbox_checkbox-input__bCQK8">
-
+			<div
+				class="ContentWrapper_article__1qahd ContentWrapper_bg-white__3zTOk">
+				<div class="DeliveryInfo_article__gSoBW">
+					<div class="DeliveryContent_article__32hL7">
+						<div class="DeliveryContent_inner__2xPj3">
+							<strong class="DeliveryContent_name__1kzyK"><span
+								class="blind">배송지명</span>${member.memName }(집)</strong>
+							<div class="DeliveryContent_area-phone__2jR07">
+								<div class="DeliveryContent_number__1sasU">
+									<span class="DeliveryContent_phone__2XnIr"><span
+										class="blind">연락처</span>${member.phone }</span>
+								</div>
+								<div class="DeliveryContent_checkbox__3p_Ky">
+									<div class="DeliveryContent_checkbox-inner__21gX3">
+										<span
+											class="Checkbox_article__1cp2Y icon-18 Checkbox_size-15__1AAHf Checkbox_weight-medium__L-KKf"><input
+											type="checkbox" id="phone" name="phone"
+											class="Checkbox_checkbox-input__bCQK8">
+									</div>
 								</div>
 							</div>
+							<div class="DeliveryContent_area-address__2O855">
+								<span class="blind">주소</span>${member.address }
+							</div>
 						</div>
-						<div class="DeliveryContent_area-address__2O855">
-							<span class="blind">주소</span>${member.address }
+						<div class="DeliveryContent_area-button__tN_x3">
+							<button type="button" data-nlog-click-code="addcha"
+								class="ButtonBox-module_article__b5G1- ButtonBox-module_tiny__Y0FYf ButtonBox-module_basic__AwAaz">변경</button>
 						</div>
 					</div>
-					<div class="DeliveryContent_area-button__tN_x3">
-						<button type="button" data-nlog-click-code="addcha"
-							class="ButtonBox-module_article__b5G1- ButtonBox-module_tiny__Y0FYf ButtonBox-module_basic__AwAaz">변경</button>
-					</div>
+
+
 				</div>
-
-
 			</div>
 		</div>
-	</div>
-	<div class="ContentSection_article__3a-7Z">
-		<div
-			class="SectionHeader_article__4vJgn SectionHeader_type-fold__3hQfS SectionHeader_is-open__1dR-a">
-			<div class="SectionHeader_inner__jljYc">
-				<h3 class="SectionHeader_title__27a8h">주문상품</h3>
-				<div class="SectionHeader_right-area__21q-o">
-					<span class="SectionHeader_icon-fold__1gvW4"><svg width="14"
-							height="8" viewBox="0 0 14 8" fill="none"
-							xmlns="http://www.w3.org/2000/svg">
+		<div class="ContentSection_article__3a-7Z">
+			<div
+				class="SectionHeader_article__4vJgn SectionHeader_type-fold__3hQfS SectionHeader_is-open__1dR-a">
+				<div class="SectionHeader_inner__jljYc">
+					<h3 class="SectionHeader_title__27a8h">주문상품</h3>
+					<div class="SectionHeader_right-area__21q-o">
+						<span class="SectionHeader_icon-fold__1gvW4"><svg
+								width="14" height="8" viewBox="0 0 14 8" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
 							<path d="M1 1L7 7L13 1" stroke="#1e1e23" stroke-width="2"
-								stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+									stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+					</div>
+				</div>
+				<button type="button" class="SectionHeader_button-fold__2XQj3">
+					<span class="blind">접기</span>
+				</button>
+			</div>
+			<div
+				class="ContentWrapper_article__1qahd ContentWrapper_bg-white__3zTOk">
+				<ul class="ProductInfoSection_article__yFi-p">
+					<li class="ProductInfoSection_item__2k1FV">
+						<ul class="ProductInfoSection_product-list__2lvnN">
+							<li class="ProductInfoSection_product-item__PxFth"><div
+									class="ProductDetail_article__N_miq">
+									<div class="content">
+										<div></div>
+										<c:forEach var="ol" items="${olList }">
+											<input type="hidden" name=listNo value="${ol.listNo }">
+											<a
+												href="https://smartstore.naver.com/main/products/9461787188"
+												class="" data-nlog-click-code="name"><strong
+												class="ProductDetail_name__19lwp"><span
+													class="blind">상품명</span>${ol.prodName } </strong></a>
+											<ul class="ProductDetail_list-option__TXsQ2">
+												<li class="ProductDetail_option__1t3iU"><span
+													class="ProductDetail_badge__33Ils"><span
+														class="Badge_article__3GI4G Badge_badge-box__1g647 Badge_type-basic__2edZm Badge_color-gray__3ayAA Badge_size-small__WN75I">수량</span></span>
+													<div>
+														<span class="ProductDetail_text__10R-S"><em
+															class="ProductDetail_highlight__12eZ1 ProductDetail_color-gray800__1A7T9">${ol.count }개</em></span>
+													</div></li>
+											</ul>
+											<div class="ProductDetail_area-price__JxBPl">
+												<span class="ProductDetail_price__2o_H2"><span
+													class="blind">상품가격</span>${ol.prodPrice*ol.count }원</span>
+
+											</div>
+											<br>
+										</c:forEach>
+									</div>
+								</div></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div
+				class="ContentWrapper_article__1qahd ContentWrapper_bg-white__3zTOk">
+				<div class="article">
+					<dl class="ProductPrice_total__Wiq2S">
+						<dt class="ProductPrice_title-total__1na8f">총 주문금액</dt>
+						<dd class="ProductPrice_desc-total__2kE5T">${lastPrice }원</dd>
+					</dl>
 				</div>
 			</div>
-			<button type="button" class="SectionHeader_button-fold__2XQj3">
-				<span class="blind">접기</span>
-			</button>
 		</div>
+
+
+
+
+		<div></div>
 		<div
-			class="ContentWrapper_article__1qahd ContentWrapper_bg-white__3zTOk">
-			<ul class="ProductInfoSection_article__yFi-p">
-				<li class="ProductInfoSection_item__2k1FV">
-					<ul class="ProductInfoSection_product-list__2lvnN">
-						<li class="ProductInfoSection_product-item__PxFth"><div
-								class="ProductDetail_article__N_miq">
-
-
-
-
-
-
-								<div class="content">
-									<div></div>
-									<c:forEach var="ol" items="${olList }">
-									<input type="hidden" name=listNo value="${ol.listNo }">
-										<a
-											href="https://smartstore.naver.com/main/products/9461787188"
-											class="" data-nlog-click-code="name"><strong
-											class="ProductDetail_name__19lwp"><span
-												class="blind">상품명</span>${ol.prodName } </strong></a>
-										<ul class="ProductDetail_list-option__TXsQ2">
-											<li class="ProductDetail_option__1t3iU"><span
-												class="ProductDetail_badge__33Ils"><span
-													class="Badge_article__3GI4G Badge_badge-box__1g647 Badge_type-basic__2edZm Badge_color-gray__3ayAA Badge_size-small__WN75I">수량</span></span>
-												<div>
-													<span class="ProductDetail_text__10R-S"><em
-														class="ProductDetail_highlight__12eZ1 ProductDetail_color-gray800__1A7T9">${ol.count }개</em></span>
-												</div></li>
-										</ul>
-										<div class="ProductDetail_area-price__JxBPl">
-											<span class="ProductDetail_price__2o_H2"><span
-												class="blind">상품가격</span>${ol.prodPrice*ol.count }원</span>
-
-										</div>
-										<br>
-									</c:forEach>
-								</div>
-							</div></li>
-					</ul>
-				</li>
-			</ul>
+			class="SubmitButton_area-description__3xaj8 SubmitButton_type-static__13l6F SubmitButton_type-pc__Vwp7H"
+			aria-hidden="false">
+			<p class="SubmitButton_description__33CVU">주문 내용을 확인하였으며, 정보 제공
+				등에 동의합니다.</p>
 		</div>
+		<div></div>
 		<div
-			class="ContentWrapper_article__1qahd ContentWrapper_bg-white__3zTOk">
-			<div class="article">
-				<dl class="ProductPrice_total__Wiq2S">
-					<dt class="ProductPrice_title-total__1na8f">총 주문금액</dt>
-					<dd class="ProductPrice_desc-total__2kE5T">${lastPrice }원</dd>
-				</dl>
-			</div>
-		</div>
-	</div>
-
-
-
-
-	<div></div>
-	<div
-		class="SubmitButton_area-description__3xaj8 SubmitButton_type-static__13l6F SubmitButton_type-pc__Vwp7H"
-		aria-hidden="false">
-		<p class="SubmitButton_description__33CVU">주문 내용을 확인하였으며, 정보 제공 등에
-			동의합니다.</p>
-	</div>
-	<div></div>
-	<div
-		class="SubmitButton_article__133Dz SubmitButton_type-pc__Vwp7H SubmitButton_type-static__13l6F">
-		<div class="SubmitButton_inner__2X0b5">
-			<div class="SubmitButton_section-button__rTe34">
-				<div class="SubmitButton_area-button__21lNY">
-					 <input
-						type="hidden" name=id value="${logId }"> <input
-						type="hidden" name=member value="${member }"> <input
-						type="hidden" name=olList value="${olList }"> <input
-						type="hidden" name=aPrice value="${lastPrice }">
-					<button type="button"
-						class="ButtonBox-module_article__b5G1- ButtonBox-module_largefull__HJTe- ButtonBox-module_primary__1jjt- ButtonBox-module_color-green__d3eYM"
-						onclick='buy()'>결제하기</button>
+			class="SubmitButton_article__133Dz SubmitButton_type-pc__Vwp7H SubmitButton_type-static__13l6F">
+			<div class="SubmitButton_inner__2X0b5">
+				<div class="SubmitButton_section-button__rTe34">
+					<div class="SubmitButton_area-button__21lNY">
+						<input type="hidden" name=id value="${logId }"> <input
+							type="hidden" name=member value="${member }"> <input
+							type="hidden" name=olList value="${olList }"> <input
+							type="hidden" name=aPrice value="${lastPrice }">
+						<button type="button"
+							class="ButtonBox-module_article__b5G1- ButtonBox-module_largefull__HJTe- ButtonBox-module_primary__1jjt- ButtonBox-module_color-green__d3eYM"
+							onclick='buy()'>결제하기</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 

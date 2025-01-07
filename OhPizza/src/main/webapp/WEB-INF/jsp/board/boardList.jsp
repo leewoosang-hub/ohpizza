@@ -1,132 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<!-- <p>${pageOut }</p> -->
-<!-- body -->
-
 <link href="css/allMarginPadding.css" rel="stylesheet">
-<body>
-  <section class="box">
 
-<!-- Sidebar -->
-	<c:choose>
-		<c:when test="${null != logId }">
-			<a href="boardForm.do"><button class="btn btn-warning"
-					type="submit">글쓰기</button></a>
-		</c:when>
-		<c:otherwise>
-			<button class="btn btn-warning" type="button"
-				onclick="alert('로그인 후 이용 가능한 기능입니다.')">글쓰기</button>
-		</c:otherwise>
-	</c:choose>
-	<div class="boardList">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">게시판 번호</th>
-					<th scope="col">제목</th>
-					<th scope="col">작성자</th>
-					<th scope="col">작성일</th>
-					<th scope="col">조회수</th>
-					<c:choose>
-						<c:when test="${logId != null}">
-					    <th scope="col">삭제</th>
-					    </c:when>
-					    <c:otherwise>
-					    <th scope="col">-</th>
-					    </c:otherwise>
-					</c:choose>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="board" items="${boardList }" varStatus="stat">
+<style>
+.board:hover{
+	background : silver;
+}
+
+.title{
+	text-align : center;
+}
+
+</style>
+
+<body>
+	<section class="box">
+		<!-- Sidebar -->
+		<c:choose>
+			<c:when test="${null != logId }">
+				<a href="boardForm.do"><button class="btn btn-warning"
+						type="submit">글쓰기</button></a>
+			</c:when>
+			<c:otherwise>
+				<button class="btn btn-warning" type="button"
+					onclick="alert('로그인 후 이용 가능한 기능입니다.')">글쓰기</button>
+			</c:otherwise>
+		</c:choose>
+		<div class="boardList">
+			<table class="table table-striped">
+				<thead>
 					<tr>
-						<th scope="row">${board.boardNo }</th>
-						<td><a
-							href="boardDetail.do?bno=${board.boardNo }&id=${board.memId }">${board.boardTitle }</a></td>
-						<td>${board.memId }</td>
-						<td>${board.boardDate() }</td>
-						<td>${board.boardView }</td>
-						<td>
+						<th class="col-sm-4" scope="col">제목</th>
+						<th  scope="col">작성자</th>
+						<th  scope="col">작성일</th>
+						<th  scope="col">조회수</th>
 						<c:choose>
-								<c:when test="${logId == board.memId }">
-									<a href="removeBoard.do?boardNo=${board.boardNo }"><button type="button">삭제</button></a>
-								</c:when>
-								<c:otherwise>
-									-
-								</c:otherwise>
+							<c:when test="${logId != null}">
+								<th scope="col">삭제</th>
+							</c:when>
+							<c:otherwise>
+								<th scope="col">-</th>
+							</c:otherwise>
 						</c:choose>
-						</td>
-						<!-- 
-							<form action="removeBoard.do" method="post">
-								<c:choose>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="board" items="${boardList }" varStatus="stat">
+						<tr class="board" data-board-no="${board.boardNo}">
+							<td class="col-sm-6 title" >${board.boardTitle }</td>
+							<td >${board.memId }</td>
+							<td >${board.boardDate() }</td>
+							<td >${board.boardView }</td>
+							<td><c:choose>
 									<c:when test="${logId == board.memId }">
-										<td><input id="btnRemove" class="btn btn-danger"
-											type="submit" value="삭제"></td>
+										<a href="removeBoard.do?boardNo=${board.boardNo }"><button
+												type="button">삭제</button></a>
 									</c:when>
 									<c:otherwise>
-										<td><input class="btn btn-danger" type="hidden" value="삭제"></td>
-									</c:otherwise>
-								</c:choose>
-							</form>
-						 -->
-					</tr>
+									-
+								</c:otherwise>
+								</c:choose></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		<!-- 페이징 -->
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<!-- prev 페이지 -->
+				<c:if test="${pageOut.preview }">
+					<li class="page-item"><a class="page-link"
+						href="boardList.do?pageNum=${pageOut.page - 1 }"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+					</a></li>
+				</c:if>
+				<!-- 페이지 갯수만큼 링크생성 -->
+				<c:forEach var="p" begin="${pageOut.startPage }"
+					end="${pageOut.endPage }">
+					<c:choose>
+						<c:when test="${pageOut.page == p }">
+							<li class="page-item active" aria-current="page"><span
+								class="page-link">${p }</span></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+								href="boardList.do?pageNum=${p }">${p }</a></li>
+							<!--paging.getPage속성 = p 같으면..  -->
+						</c:otherwise>
+					</c:choose>
 				</c:forEach>
-			</tbody>
-		</table>
-	</div>
-<!-- <c:choose>
-		<c:when test="${null != logId }">
-			<a href="boardList.do?&memId=${logId}"><button class="btn"
-					type="submit">내 글만 보기</button></a>
-		</c:when>
-		<c:otherwise>
-			<button class="btn btn-warning" type="button"
-				onclick="alert('로그인 후 이용 가능한 기능입니다.')">내 글만 보기</button>
-		</c:otherwise>
-	</c:choose> -->	
-	<!-- end body -->
-	<!-- Sidebar -->
-	
-	<!-- end Sidebar -->
-	<!-- pageNumbering -->
-	<!-- <p>${pageOut }</p> -->
-	<!-- 페이징 -->
-	<nav aria-label="Page navigation example">
-		<ul class="pagination justify-content-center">
-			<!-- prev 페이지 -->
-			<c:if test="${pageOut.preview }">
-				<li class="page-item"><a class="page-link"
-					href="boardList.do?pageNum=${pageOut.page - 1 }"
-					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-				</a></li>
-			</c:if>
-			<!-- 페이지 갯수만큼 링크생성 -->
-			<c:forEach var="p" begin="${pageOut.startPage }"
-				end="${pageOut.endPage }">
-				<c:choose>
-					<c:when test="${pageOut.page == p }">
-						<li class="page-item active" aria-current="page"><span
-							class="page-link">${p }</span></li>
-					</c:when>
-					<c:otherwise>
-						<li class="page-item"><a class="page-link"
-							href="boardList.do?pageNum=${p }">${p }</a></li>
-						<!--paging.getPage속성 = p 같으면..  -->
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<!-- next 페이지 -->
-			<c:if test="${pageOut.isNext()}">
-				<li class="page-item"><a class="page-link"
-					href="boardList.do?pageNum=${pageOut.page + 1 }" aria-label="Next">
-						<span aria-hidden="true">&raquo;</span>
-				</a></li>
-			</c:if>
-		</ul>
-	</nav>
-	<!-- 페이지부분 -->
-	<!-- end pageNumbering -->
-  </section>
+				<!-- next 페이지 -->
+				<c:if test="${pageOut.isNext()}">
+					<li class="page-item"><a class="page-link"
+						href="boardList.do?pageNum=${pageOut.page + 1 }" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+					</a></li>
+				</c:if>
+			</ul>
+		</nav>
+		<!-- 페이지부분 -->
+		<!-- end pageNumbering -->
+	</section>
 </body>
+<script >
+const boardTr = document.querySelectorAll("tbody > tr");
+boardTr.forEach((tr) => {
+  tr.addEventListener("click", function (event) {
+    const thisBoardNo = this.getAttribute("data-board-no").trim();
+    const thisMemId = this.children[1].innerHTML.trim();
+  	const url = "boardDetail.do?bno=" + thisBoardNo + "&id=" + thisMemId;
+    location.href = url
+  });
+});
+</script>

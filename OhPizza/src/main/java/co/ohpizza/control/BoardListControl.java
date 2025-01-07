@@ -35,9 +35,6 @@ public class BoardListControl implements Control {
 		int totalCnt = BoardServiceList.totalPage();
 		//pageDTO의 생성자에 넣어줄 매개변수
 
-//		PageDTO pageDTO = new PageDTO(Integer.parseInt(page),totalCnt,5);
-//		//System.out.println(totalCnt);
-		//System.out.println(page);
 		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), totalCnt , 5);
 
 		//jsp에 넘겨줄 값
