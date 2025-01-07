@@ -112,6 +112,7 @@ boardTr.forEach((tr) => {
     const thisMemId = this.children[1].innerHTML.trim();
   	const url = "boardDetail.do?bno=" + thisBoardNo + "&id=" + thisMemId;
     location.href = url
+    console.log("test")
   });
 });
 </script>
