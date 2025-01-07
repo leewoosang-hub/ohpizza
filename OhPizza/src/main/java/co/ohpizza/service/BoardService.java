@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import co.ohpizza.vo.BoardVO;
-
+//
 public interface BoardService {
 	//게시물 갯수를 5개 단위로 끊어 출력하는 기능
 	List<BoardVO> boardList(String page);
