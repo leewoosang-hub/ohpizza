@@ -114,6 +114,7 @@ boardTr.forEach((tr) => {
     location.href = url
     console.log("test")
     
+    
   });
 });
 </script>
