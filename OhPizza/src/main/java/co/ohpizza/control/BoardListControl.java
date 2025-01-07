@@ -25,13 +25,8 @@ public class BoardListControl implements Control {
 		//기본 페이지의 번호는 1번으로 한다.
 		String page = req.getParameter("pageNum");
 		page = page == null ? "1" : page;
-	//	String memId = req.getParameter("memId");
-	//	memId = memId == null ? "user01" : memId;
 		List<BoardVO> board = BoardServiceList.boardList(page);
 		req.setAttribute("boardList", board);
-		//System.out.println(board);
-		//end 게시판 출력
-		
 		//
 		
 		//페이지//
