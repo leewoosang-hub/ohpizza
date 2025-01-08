@@ -17,6 +17,6 @@
 - マウスカーソル CSS: https://ming-jee.tistory.com/65
 - TEXTAREA CSS: https://velog.io/@leemember/CSS-textarea-%ED%81%AC%EA%B8%B0-%EA%B3%A0%EC%A0%95%ED%95%98%EA%B8%B0
 - footer CSS: https://velog.io/@gomiseki/footer-%ED%95%98%EB%8B%A8-%EA%B3%A0%EC%A0%95
-- ajax 参考:　https://padac-padac.tistory.com/14:
+- ajax 参考:　https://yejip.com/web/2020-12-19-%EA%B2%8C%EC%8B%9C%ED%8C%90ajax3/
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=f08080&height=200&section=footer&20render&fontSize=90" />
