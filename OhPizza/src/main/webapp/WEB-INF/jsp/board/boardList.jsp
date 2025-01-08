@@ -6,6 +6,7 @@
 <style>
 .board:hover{
 	background : silver;
+	cursor : pointer;
 }
 
 .title{
@@ -33,8 +34,8 @@
 					<tr>
 						<th class="col-sm-4" scope="col">제목</th>
 						<th  scope="col">작성자</th>
-						<th  scope="col">작성일</th>
 						<th  scope="col">조회수</th>
+						<th  scope="col">작성일</th>
 						<c:choose>
 							<c:when test="${logId != null}">
 								<th scope="col">삭제</th>
@@ -50,8 +51,8 @@
 						<tr class="board" data-board-no="${board.boardNo}">
 							<td class="col-sm-6 title" >${board.boardTitle }</td>
 							<td >${board.memId }</td>
-							<td >${board.boardDate() }</td>
 							<td >${board.boardView }</td>
+							<td >${board.boardDate() }</td>
 							<td><c:choose>
 									<c:when test="${logId == board.memId }">
 										<a href="removeBoard.do?boardNo=${board.boardNo }"><button
@@ -105,17 +106,13 @@
 	</section>
 </body>
 <script >
-const boardTr = document.querySelectorAll("tbody > tr");
-boardTr.forEach((tr) => {
+const boardTr = document.querySelectorAll("tbody > tr"); // tr 지정
+boardTr.forEach((tr) => { // tr을 반복문을 돌림 모든 요소에 이벤트 발생
   tr.addEventListener("click", function (event) {
     const thisBoardNo = this.getAttribute("data-board-no").trim();
     const thisMemId = this.children[1].innerHTML.trim();
   	const url = "boardDetail.do?bno=" + thisBoardNo + "&id=" + thisMemId;
     location.href = url
-    console.log("test")
-    
-    
-    
   });
 });
 </script>

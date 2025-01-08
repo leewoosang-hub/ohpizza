@@ -67,7 +67,36 @@
 .btn-secondary:hover {
     background-color: #5a6268; /* 호버 배경색 */
 }
-	
+.content {
+	width : 100%;
+	height: 500px;
+	border: none;
+	resize: none;
+}
+.title{
+	width : 100%;
+	height: 10 em;
+	border: none;
+	resize: none;
+}
+.wirter{
+	width : 100%;
+	height: 10 em;
+	border: none;
+	resize: none;
+}	
+footer {
+    position: fixed; /* footer를 화면 아래에 고정 */
+    bottom: 0;
+    left: 0;
+    width: 100%; /* 화면 전체 너비 */
+    background-color: #17a2b8; /* 기존 footer 색상 */
+    color: #fff; /* 텍스트 색상 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    padding: 10px;
+    z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
 </style>
 </head>    
 <body>
@@ -78,15 +107,15 @@
       <table class="table">
         <tr>
           <th>제목</th>
-          <td><input class="form-control" type="text" name="title" placeholder="제목을 입력하세요"></td>
+          <td><input class="form-control title" type="text" name="title" placeholder="제목을 입력하세요"></td>
         </tr>
         <tr>
           <th>내용</th>
-          <td><textarea class="form-control" name="review" placeholder="내용을 입력하세요"></textarea></td>
+          <td><textarea class="form-control content" name="review" placeholder="내용을 입력하세요"></textarea></td>
         </tr>
         <tr>
           <th>작성자</th>
-          <td><input class="form-control" readonly type="text" name="memID" value="${logId }"></td>
+          <td><input class="form-control wirter" readonly type="text" name="memID" value="${logId }"></td>
         </tr>
         <tr>
           <td colspan="2" align="center">
