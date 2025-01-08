@@ -12,14 +12,18 @@
 .title{
 	text-align : center;
 }
-
+.btnMyBoard{
+	position: relative;
+        left: -300px;
+        top: 50px;
+}
 </style>
 
 <body>
 	<section class="box">
 		<!-- Sidebar -->
 		<c:choose>
-			<c:when test="${null != logId }">
+			<c:when test="${logId != null }">
 				<a href="boardForm.do"><button class="btn btn-warning"
 						type="submit">글쓰기</button></a>
 			</c:when>
@@ -28,6 +32,7 @@
 					onclick="alert('로그인 후 이용 가능한 기능입니다.')">글쓰기</button>
 			</c:otherwise>
 		</c:choose>
+			<button class="btn btn-warning btnMyBoard" type="button">내가 쓴 글</button>
 		<div class="boardList">
 			<table class="table table-striped">
 				<thead>
