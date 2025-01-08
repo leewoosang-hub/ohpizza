@@ -10,6 +10,9 @@ public interface BoardService {
 	//게시물 갯수를 5개 단위로 끊어 출력하는 기능
 	List<BoardVO> boardList(String page);
 	
+	//내가 쓴 글만 보기
+	List<BoardVO> myBoardList (String page, String meId);
+	
 	//총 게시물 갯수를 구하기 위한 기능
 	int totalPage();
 	

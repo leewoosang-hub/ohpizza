@@ -27,8 +27,6 @@ public class BoardListControl implements Control {
 		page = page == null ? "1" : page;
 		List<BoardVO> board = BoardServiceList.boardList(page);
 		req.setAttribute("boardList", board);
-		//
-		//
 		
 		//페이지//
 		//총 게시물 수를 구하기 위한 식

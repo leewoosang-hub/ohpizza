@@ -17,6 +17,19 @@
     ]]>
 	</select>
 	
+	<select id="myBoardList" parameterType="String" resultType="co.ohpizza.vo.BoardVO">
+		select  *
+		from (select rownum rn, a.*
+		from (select *
+		from tbl_board
+		where board_type = 'R' and mem_Id = #{memId}
+		order by board_no desc ) a ) b
+		where b.rn > (#{page} - 1) * 5
+    <![CDATA[
+    and   b.rn <= (#{page} * 5)	    
+    ]]>
+	</select>
+	
   <select id="inquiryList">
 	select  *
 	        from (select rownum rn, a.*

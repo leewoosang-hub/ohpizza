@@ -10,6 +10,9 @@ public interface BoardMapper {
 	//게시판 리스트 출력
 	List<BoardVO> boardList(@Param("page") String page);
 	
+	//내가 쓴 글 출력
+	List<BoardVO> myBoardList(@Param("page") String page, @Param ("memId") String memId);
+	
 	//페이지를 뽑기 위한 게시물 갯수 출력
 	int totalPage();
 	
