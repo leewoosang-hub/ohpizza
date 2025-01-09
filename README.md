@@ -27,5 +27,6 @@
 - footer CSS: https://velog.io/@gomiseki/footer-%ED%95%98%EB%8B%A8-%EA%B3%A0%EC%A0%95
 - ajax 参考1:　https://yejip.com/web/2020-12-19-%EA%B2%8C%EC%8B%9C%ED%8C%90ajax3/
 - ajax 参考2:　https://padac-padac.tistory.com/149
+- JSでDOM操作:　https://velog.io/@ssumniee/JS-%ED%81%B4%EB%9E%98%EC%8A%A4%EB%AA%85-%EC%B6%94%EA%B0%80-%EC%82%AD%EC%A0%9C
 - jackson 依存性の注入 : https://interconnection.tistory.com/137
 <img src="https://capsule-render.vercel.app/api?type=waving&color=f08080&height=200&section=footer&20render&fontSize=90" />
