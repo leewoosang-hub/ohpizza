@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link href="css/allMarginPadding.css" rel="stylesheet">
+<link href="css/allMarginPadding.css" rel="stylesheet" />
 
-<script src="https://code.jquery.com/jquery-3.7.1.js" 
-		integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
-		crossorigin="anonymous">
-</script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"
+	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+	crossorigin="anonymous"></script>
 
 <style>
 .board:hover {
@@ -19,32 +18,32 @@
 }
 
 .btnMyBoard {
-	position:  relative;
-	right: 300px;
-	top:  50px;
+	position: relative;
+	left: 6 rem;
+	top: 0px;
 }
 </style>
 
 <body>
 	<section class="box">
 		<!-- Sidebar -->
+		<!-- <input type="hidden" id="logId" value="${logId }"> 중복 송신 -->
 		<c:choose>
 			<c:when test="${logId != null }">
 				<a href="boardForm.do"><button class="btn btn-warning"
 						type="submit">글쓰기</button></a>
 			</c:when>
 			<c:otherwise>
-				<button class="btn btn-warning" type="button"
+				<button class="btn btn-warning" type="button" disabled
 					onclick="alert('로그인 후 이용 가능한 기능입니다.')">글쓰기</button>
 			</c:otherwise>
 		</c:choose>
 		<c:choose>
 			<c:when test="${logId != null }">
-				<button class="btn btn-warning btnMyBoard" type="button">내가
-					쓴 글</button>
+				<button class="btn btn-warning btnMyBoard" type="button">내가 쓴 글</button>
 			</c:when>
 			<c:otherwise>
-				<button class="btn btn-warning btnMyBoard" type="button"
+				<button class="btn btn-warning btnMyBoard" type="button" disabled
 					onclick="alert('로그인 후 이용 가능한 기능입니다.')">내가 쓴 글</button>
 			</c:otherwise>
 		</c:choose>
@@ -78,9 +77,7 @@
 										<a href="removeBoard.do?boardNo=${board.boardNo }"><button
 												type="button">삭제</button></a>
 									</c:when>
-									<c:otherwise>
-									-
-								</c:otherwise>
+									<c:otherwise> - </c:otherwise>
 								</c:choose></td>
 						</tr>
 					</c:forEach>
@@ -126,17 +123,37 @@
 	</section>
 </body>
 <script>
-
-// tr이벤트 설정
-const boardTr = document.querySelectorAll("tbody > tr"); // tr 지정
-boardTr.forEach((tr) => { // tr을 반복문을 돌림 모든 요소에 이벤트 발생
-  tr.addEventListener("click", function (event) {
-    const thisBoardNo = this.getAttribute("data-board-no").trim();
-    const thisMemId = this.children[1].innerHTML.trim();
-  	const url = "boardDetail.do?bno=" + thisBoardNo + "&id=" + thisMemId;
-    location.href = url
+  // tr이벤트 설정
+  const boardTr = document.querySelectorAll("tbody > tr"); // tr 지정
+  boardTr.forEach((tr) => {
+    // tr을 반복문을 돌림 모든 요소에 이벤트 발생
+    tr.addEventListener("click", function (event) {
+      const thisBoardNo = this.getAttribute("data-board-no").trim();
+      const thisMemId = this.children[1].innerHTML.trim();
+      const url = "boardDetail.do?bno=" + thisBoardNo + "&id=" + thisMemId;
+      location.href = url;
+    });
   });
-});
-
-
+  
+ // var logid = document.getElementById("logId").value
+  const myBoardList = document.querySelectorAll(".btnMyBoard");
+  myBoardList.forEach((btn) => {
+	    
+	    btn.addEventListener("click", function (event) {
+	      $.ajax({
+	        url: "/OhPizza/myBoardList.do",
+	        method: "GET",
+	        data: "json",
+	        success: function (response) {
+	          updateBoardList(response.myBoardList);
+	        },
+	        error: function (xhr, status, error) {
+	          alert("데이터를 가져오는 중 문제가 발생했습니다.");
+	        }
+	      })
+	    });
+	  });
+  function updateBoardList(response) {
+	   alert("love");
+	}
 </script>

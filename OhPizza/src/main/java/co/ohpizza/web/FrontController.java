@@ -11,40 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.ohpizza.common.Control;
-import co.ohpizza.control.LoginCheckControl;
-import co.ohpizza.control.LoginControl;
-import co.ohpizza.control.LogoutControl;
-import co.ohpizza.control.MemberListControl;
-
-import co.ohpizza.control.UpPcntControl;
-
-import co.ohpizza.control.ProductControl;
-import co.ohpizza.control.ProductListControl;
-import co.ohpizza.control.RemoveBoardControl;
-import co.ohpizza.control.ShowMemInfoControl;
-
-import co.ohpizza.control.StoreListControl;
-
-import co.ohpizza.control.UpdateMemInfoControl;
-
 import co.ohpizza.control.AddBoardControl;
-
-import co.ohpizza.control.AddMemCouponControl;
-
-import co.ohpizza.control.AddCouponControl;
 import co.ohpizza.control.AddInquiryControl;
 import co.ohpizza.control.AddInquiryShowControl;
-import co.ohpizza.control.CreateCouponControl;
-import co.ohpizza.control.DeleteMemberControl;
-import co.ohpizza.control.DeleteStoreControl;
+import co.ohpizza.control.AddMemCouponControl;
 import co.ohpizza.control.AddMemberControl;
 import co.ohpizza.control.AddOrderControl;
-
-import co.ohpizza.control.AdminAnswerListControl;
-
 import co.ohpizza.control.AddStoreControl;
 import co.ohpizza.control.AdminAnswerControl;
 import co.ohpizza.control.AdminAnswerForm;
+import co.ohpizza.control.AdminAnswerListControl;
 import co.ohpizza.control.BoardDetailControl;
 import co.ohpizza.control.BoardFormControl;
 import co.ohpizza.control.BoardListControl;
@@ -53,33 +29,36 @@ import co.ohpizza.control.CartDeleteControl;
 import co.ohpizza.control.CartNoControl;
 import co.ohpizza.control.ClosedEventControl;
 import co.ohpizza.control.CouponListControl;
-import co.ohpizza.control.MyCouponControl;
-
 import co.ohpizza.control.CreateMemberControl;
-
 import co.ohpizza.control.CreateStoreControl;
 import co.ohpizza.control.CurrentEventControl;
-import co.ohpizza.control.ShowCurrEventControl;
 import co.ohpizza.control.DeleteCouponControl;
-
-import co.ohpizza.control.DownPcntControl;
-
 import co.ohpizza.control.DeleteMeControl;
-
+import co.ohpizza.control.DeleteStoreControl;
+import co.ohpizza.control.DownPcntControl;
 import co.ohpizza.control.EventControl;
-
-import co.ohpizza.control.IdCheckControl;
-
 import co.ohpizza.control.FinalBuyControl;
 import co.ohpizza.control.FindPassControl;
 import co.ohpizza.control.GetPassControl;
+import co.ohpizza.control.IdCheckControl;
 import co.ohpizza.control.InquiryListControl;
-
+import co.ohpizza.control.LoginCheckControl;
+import co.ohpizza.control.LoginControl;
+import co.ohpizza.control.LogoutControl;
+import co.ohpizza.control.MemberListControl;
+import co.ohpizza.control.MyCouponControl;
 import co.ohpizza.control.MypageControl;
-
-
 import co.ohpizza.control.OrderListControl;
 import co.ohpizza.control.PayControl;
+import co.ohpizza.control.ProductControl;
+import co.ohpizza.control.ProductListControl;
+import co.ohpizza.control.RemoveBoardControl;
+import co.ohpizza.control.ShowCurrEventControl;
+import co.ohpizza.control.ShowMemInfoControl;
+import co.ohpizza.control.StoreListControl;
+import co.ohpizza.control.UpPcntControl;
+import co.ohpizza.control.UpdateMemInfoControl;
+import co.ohpizza.control.myBoardListControl;
 
 public class FrontController extends HttpServlet {
 	Map<String, Control> map;
@@ -142,7 +121,8 @@ public class FrontController extends HttpServlet {
 		map.put("/boardForm.do",new BoardFormControl());
 		//게시글 삭제
 		map.put("/removeBoard.do", new RemoveBoardControl());
-
+		//내가 쓴 게시물
+		map.put("/myBoardList.do", new myBoardListControl());
 		
 		// 나의오피
 		map.put("/myPage.do", new MypageControl());

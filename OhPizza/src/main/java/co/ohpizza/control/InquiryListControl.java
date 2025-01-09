@@ -27,7 +27,6 @@ public class InquiryListControl implements Control {
 		page = page == null ? "1" : page;
 		int totalCnt = boardService.inquirypage(id);
 		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), totalCnt, 5);	
-		System.out.println(page);
 		
 		//리스트
 		List<BoardVO> inquiryList = boardService.inquiryList(page,id);

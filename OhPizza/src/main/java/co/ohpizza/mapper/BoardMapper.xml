@@ -22,7 +22,7 @@
 		from (select rownum rn, a.*
 		from (select *
 		from tbl_board
-		where board_type = 'R' and mem_Id = #{memId}
+		where board_type = 'R' and mem_id = #{memId}
 		order by board_no desc ) a ) b
 		where b.rn > (#{page} - 1) * 5
     <![CDATA[

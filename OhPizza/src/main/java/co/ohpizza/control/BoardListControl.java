@@ -37,7 +37,6 @@ public class BoardListControl implements Control {
 
 		//jsp에 넘겨줄 값
 		req.setAttribute("pageOut", pageDTO);
-		System.out.println(pageDTO);
 		//end 페이지//
 		
 		req.getRequestDispatcher("board/boardList.tiles")//

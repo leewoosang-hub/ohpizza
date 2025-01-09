@@ -16,9 +16,10 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> boardList(String page) {
 		return mapper.boardList(page);
 	}
+	
 	@Override
 	public List<BoardVO> myBoardList(String page, String meId) {
-		return null;
+		return mapper.myBoardList(page, meId);
 	}
 	
 	@Override
