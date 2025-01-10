@@ -19,15 +19,8 @@
 	
 	<select id="myBoardList" parameterType="String" resultType="co.ohpizza.vo.BoardVO">
 		select  *
-		from (select rownum rn, a.*
-		from (select *
 		from tbl_board
 		where board_type = 'R' and mem_id = #{memId}
-		order by board_no desc ) a ) b
-		where b.rn > (#{page} - 1) * 5
-    <![CDATA[
-    and   b.rn <= (#{page} * 5)	    
-    ]]>
 	</select>
 	
   <select id="inquiryList">
@@ -83,9 +76,9 @@
 	</delete>
 	
 	<update id="viewIncrease" parameterType="int">
-	UPDATE tbl_board 
-	set board_view = board_view + 1
-	where board_no = ${board_no}
+		UPDATE tbl_board 
+		set board_view = board_view + 1
+		where board_no = ${board_no}
 	</update>
 	
 	<insert id="insertInquiry" parameterType="co.ohpizza.vo.BoardVO">

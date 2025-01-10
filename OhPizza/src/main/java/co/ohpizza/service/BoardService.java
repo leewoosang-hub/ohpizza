@@ -11,7 +11,7 @@ public interface BoardService {
 	List<BoardVO> boardList(String page);
 	
 	//내가 쓴 글만 보기
-	List<BoardVO> myBoardList (String page, String meId);
+	List<BoardVO> myBoardList (String memId);
 	
 	//총 게시물 갯수를 구하기 위한 기능
 	int totalPage();

@@ -3,6 +3,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 /* 카드 스타일 */
+
+
+html, body {
+  height: 100%; /* 전체 화면 높이 */
+  margin: 0;
+}
+
+#wrapper{
+  height : auto;
+  min-height: 100%;
+}
+
 .card {
 	max-width: 800px; /* 카드 너비 */
 	margin: 30px auto; /* 화면 중앙 정렬 */
@@ -75,77 +87,70 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* 전체 화면 높이 */
-    margin: 0; /* 기본 margin 제거 */
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh; /* 전체 화면 높이 */
+	margin: 0; /* 기본 margin 제거 */
 }
 
 main {
-    flex: 1; /* 메인 콘텐츠가 화면의 나머지 공간을 차지 */
-    overflow-y: auto; /* 스크롤 활성화 */
-    padding: 20px; /* 내부 여백 */
+	flex: 1; /* 메인 콘텐츠가 화면의 나머지 공간을 차지 */
+	overflow-y: auto; /* 스크롤 활성화 */
+	padding: 20px; /* 내부 여백 */
 }
 
 footer {
-    position: fixed; /* footer를 화면 아래에 고정 */
-    bottom: 0;
-    left: 0;
-    width: 100%; /* 화면 전체 너비 */
-    background-color: #17a2b8; /* 기존 footer 색상 */
-    color: #fff; /* 텍스트 색상 */
-    text-align: center; /* 텍스트 가운데 정렬 */
-    padding: 10px 0;
-    z-index: 1000; /* 다른 요소 위에 표시 */
-}
+ 	position : relative;
+ }
 
-.title > td{
-	font-size : 2 rem;
-	font-weight : bold;
+.title>td {
+	font-size: 2 rem;
+	font-weight: bold;
 }
-
 </style>
 <body>
-	<section class="card">
-		<a href="boardList.do">
-			<p style="text-align: left;">이전 화면으로 돌아가기</p>
-		</a>
+	<div id="wrapper">
+		<section class="card">
+			<a href="boardList.do">
+				<p style="text-align: left;">이전 화면으로 돌아가기</p>
+			</a>
 			<form action="">
 				<input type="hidden" name="bno" value="${boardDetail.boardNo }">
-			<div class="scroll">
-				<table class="table">
-					<thead>
-						<tr class="title">
-							<th >제목</th>
-							<td colspan="5">${boardDetail.boardTitle }</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th class="col-sm-2 writer">작성자</th>
-							<td>${boardDetail.memId }</td>
-							<th class="col-sm-2 view">조회수</th>
-							<td>${boardDetail.boardView }</td>
-						</tr>
-						<tr>
-							<th class="content">내용</th>
-							<td colspan="5">${boardDetail.review }</td>
-						</tr>
-					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="6" align="center"><c:choose>
-									<c:when test="${logId == boardDetail.memId }">
-										<button class="btn btn-warning" type="button">수정하기</button>
-									</c:when>
-									<c:otherwise>
-										<button class="btn btn-warning" disabled type="button">수정하기</button>
-									</c:otherwise>
-								</c:choose></td>
-						</tr>
-					</tfoot>
-				</table>
-			</div>
-		</form>
-	</section>
+				<div class="scroll">
+					<table class="table">
+						<thead>
+							<tr class="title">
+								<th>제목</th>
+								<td colspan="5">${boardDetail.boardTitle }</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th class="col-sm-2 writer">작성자</th>
+								<td>${boardDetail.memId }</td>
+								<th class="col-sm-2 view">조회수</th>
+								<td>${boardDetail.boardView }</td>
+							</tr>
+							<tr>
+								<th class="content">내용</th>
+								<td colspan="5">${boardDetail.review }</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="6" align="center"><c:choose>
+										<c:when test="${logId == boardDetail.memId }">
+											<button class="btn btn-warning" type="button">수정하기</button>
+										</c:when>
+										<c:otherwise>
+											<button class="btn btn-warning" disabled type="button">수정하기</button>
+										</c:otherwise>
+									</c:choose></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</form>
+		</section>
+	</div>
 </body>

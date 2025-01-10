@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import co.ohpizza.common.Control;
-import co.ohpizza.common.PageDTO;
 import co.ohpizza.service.BoardService;
 import co.ohpizza.service.BoardServiceImpl;
 import co.ohpizza.vo.BoardVO;
@@ -28,18 +27,15 @@ public class myBoardListControl implements Control {
 		resp.setContentType("application/json;charset=UTF-8");
 		
 		String id = (String) session.getAttribute("logId");
+		
 		String page = req.getParameter("page");
 		page = page == null ? "1" : page;
 		
 		BoardService myBoardList = new BoardServiceImpl();
 		
-		List<BoardVO> board = myBoardList.myBoardList(page, id);
-		int totalCnt = myBoardList.totalPage();
-		
-		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), totalCnt , 5);
+		List<BoardVO> board = myBoardList.myBoardList(id);
 		
 		 Map<String, Object> responseMap = new HashMap<>();
-		 responseMap.put("pageOut", pageDTO);
 		 responseMap.put("myBoardList", board);
 		
 		 ObjectMapper mapper = new ObjectMapper();

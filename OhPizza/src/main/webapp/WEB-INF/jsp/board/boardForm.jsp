@@ -5,6 +5,17 @@
 <head>
 <style type="text/css">
 /* 카드 스타일 */
+
+html, body {
+  height: 100%; /* 전체 화면 높이 */
+  margin: 0;
+}
+
+#wrapper{
+  height : auto;
+  min-height: 100%;
+}
+
 .card {
     max-width: 800px; /* 카드 너비 */
     margin: 30px auto; /* 화면 중앙 정렬 */
@@ -85,22 +96,15 @@
 	border: none;
 	resize: none;
 }	
-footer {
-    position: fixed; /* footer를 화면 아래에 고정 */
-    bottom: 0;
-    left: 0;
-    width: 100%; /* 화면 전체 너비 */
-    background-color: #17a2b8; /* 기존 footer 색상 */
-    color: #fff; /* 텍스트 색상 */
-    text-align: center; /* 텍스트 가운데 정렬 */
-    padding: 10px;
-    z-index: 1000; /* 다른 요소 위에 표시 */
+footer{
+  position : relative;
 }
 
 </style>
 </head>    
 <body>
   <!-- 카드 스타일 적용 -->
+ <div id="wrapper">
   <section class="card">
     <h2 style="text-align: center; margin-bottom: 20px;">게시글 작성</h2>
     <form action="addBoard.do" method="post">
@@ -126,4 +130,5 @@ footer {
       </table>
     </form>
   </section>
+ </div>
 </body>
