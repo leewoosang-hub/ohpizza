@@ -4,21 +4,20 @@
 <link href="css/allMarginPadding.css" rel="stylesheet" />
 
 <script src="https://code.jquery.com/jquery-3.7.1.js"
-		integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-		crossorigin="anonymous">
+	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+	crossorigin="anonymous">
+	
 </script>
-
-<script src="/OhPizza/src/main/webapp/js/boadList.js" type="text/javascript"></script>
 
 <style>
 html, body {
-  height: 100%; /* 전체 화면 높이 */
-  margin: 0;
+	height: 100%; /* 전체 화면 높이 */
+	margin: 0;
 }
 
-#wrapper{
-  height : auto;
-  min-height: 100%;
+#wrapper {
+	height: auto;
+	min-height: 100%;
 }
 
 .board:hover {
@@ -32,7 +31,7 @@ html, body {
 
 .btnMyBoard {
 	position: relative;
-	left: 6 rem;
+	left: 0 rem;
 	top: 0px;
 }
 
@@ -54,45 +53,40 @@ html, body {
 	height: 4rem;
 	text-align: center;
 	vertical-align: middle;
-	border-bottom:solid 1px gray;
+	border-bottom: solid 1px gray;
 }
 
-.table>tbody>tr:nth-child(even){
-   background-color: #ffffff; 
+.table>tbody>tr:nth-child(even) {
+	background-color: #ffffff;
 }
 
-footer{
-  position : relative;
-  transform : translateY(0%);
+footer {
+	position: relative;
+	transform: translateY(0%);
 }
-
 </style>
 
 <body>
 	<div id="wrapper">
 		<section class="box">
-			<!-- Sidebar -->
 			<input type="hidden" id="logId" value="${logId }" />
-			<!-- 중복 송신 -->
 			<div>
 				<c:choose>
 					<c:when test="${logId != null }">
-						<a href="boardForm.do"><button class="btn btn-warning"
-								type="submit">글쓰기</button></a>
+						<a href="boardForm.do"><button class="btn btn-warning" type="submit">投稿</button></a>
 					</c:when>
 					<c:otherwise>
 						<button class="btn btn-warning" type="button" disabled
-							onclick="alert('로그인 후 이용 가능한 기능입니다.')">글쓰기</button>
+							onclick="alert('ログイン後に利用可能な機能です。')">投稿</button>
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
 					<c:when test="${logId != null }">
-						<button class="btn btn-warning btnMyBoard" type="button">
-							내가 쓴 글</button>
+						<button class="btn btn-warning btnMyBoard" type="button">自分の投稿</button>
 					</c:when>
 					<c:otherwise>
 						<button class="btn btn-warning btnMyBoard" type="button" disabled
-							onclick="alert('로그인 후 이용 가능한 기능입니다.')">내가 쓴 글</button>
+							onclick="alert('ログイン後に利用可能な機能です。')">自分の投稿</button>
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -100,16 +94,16 @@ footer{
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th class="col-sm-4" scope="col">제목</th>
-							<th scope="col">작성자</th>
-							<th scope="col">조회수</th>
-							<th scope="col">작성일</th>
+							<th class="col-sm-4" scope="col">タイトル</th>
+							<th scope="col">投稿者</th>
+							<th scope="col">閲覧数</th>
+							<th scope="col">投稿日時</th>
 							<c:choose>
 								<c:when test="${logId != null}">
-									<th scope="col">삭제</th>
+									<th scope="col">削除</th>
 								</c:when>
 								<c:otherwise>
-									<th scope="col">-</th>
+									<th scope="col"></th>
 								</c:otherwise>
 							</c:choose>
 						</tr>
@@ -123,10 +117,11 @@ footer{
 								<td>${board.boardDate() }</td>
 								<td><c:choose>
 										<c:when test="${logId == board.memId }">
-											<a href="removeBoard.do?boardNo=${board.boardNo }"><button
-													type="button">삭제</button></a>
+											<a href="removeBoard.do?boardNo=${board.boardNo }">
+												<button type="button">削除する</button>
+											</a>
 										</c:when>
-										<c:otherwise> - </c:otherwise>
+										<c:otherwise>-</c:otherwise>
 									</c:choose></td>
 							</tr>
 						</c:forEach>
@@ -171,3 +166,5 @@ footer{
 		</section>
 	</div>
 </body>
+
+<script src="js/boadList.js"></script>
