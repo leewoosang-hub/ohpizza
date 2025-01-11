@@ -61,6 +61,20 @@ public class PageDTO {
 1. CSS 개선 - 참고 모델과 유사하게 CSS를 구현하였습니다.
 2. 마우스 호버링 추가 - 마우스 호버링 CSS를 추가하여 직관성을 높혔습니다.
 3. 상세 페이지 이동 방식 개선 - 제목에 직접 링크를 걸지 않고, TR 전체에 클릭 이벤트를 추가하였습니다.
+
+```
+ const boardTr = document.querySelectorAll("tbody > tr"); // trを指定
+boardTr.forEach((tr) => {
+  // trを繰り返し処理し、全ての要素にイベントを追加
+  tr.addEventListener("click", function (event) {
+    const thisBoardNo = this.getAttribute("data-board-no").trim();
+    const thisMemId = this.children[1].innerHTML.trim();
+    const url = "boardDetail.do?bno=" + thisBoardNo + "&id=" + thisMemId;
+    location.href = url;
+  });
+});
+```
+   
 4. ログイン中のセッションの投稿 - 비동기 처리로 로그인 중인 세션의 글만 출력하는 이벤트를 추가했습니다.
 
 
@@ -81,6 +95,7 @@ public class PageDTO {
 ### 参考サイト
 
 - 参考モデル: https://cyphers.nexon.com/article/balance
+- github リモート　参考: https://hanke-r.tistory.com/entry/eclipse-%EC%83%88%EB%A1%9C-%EC%83%9D%EC%84%B1%EB%90%9C-Git-branch-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0
 - ボタン css 参考: https://pjh3749.tistory.com/144
 - table css : https://hianna.tistory.com/498
 - マウスカーソル CSS: https://ming-jee.tistory.com/65
