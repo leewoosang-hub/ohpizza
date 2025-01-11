@@ -6,18 +6,77 @@
 
 ## ⌨ 掲示板  
   
-  1. 게시물에 사용할 데이터 vo
-  2. 게시물 리스트
-  3. 게시물 상세
-  4. 페이징
-  5. 수정폼
-  6. 비동기 작업으로 게시물 출력
+### 1. 페이징 기능
+
+```
+package co.ohpizza.common;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+public class PageDTO {
+    // フィールド
+    private int page; // 現在のページ
+    private int startPage, endPage; // 開始ページ、終了ページ
+    private boolean preview, next; // 前のページ、次のページ
+
+    // コンストラクタ
+    public PageDTO(int page, int total, int count) {
+        this.page = page;
+
+        // ページ計算
+        this.endPage = (int) (Math.ceil(page / 10.0) * 10);
+        this.startPage = this.endPage - 9;
+
+        // 実際の最終ページを計算
+        int realEnd = (int) Math.ceil(total / (double) count);
+        if (realEnd == 0) {
+            this.endPage = 1; // 投稿がない場合、endPageを1に設定
+        } else {
+            this.endPage = Math.min(this.endPage, realEnd); // endPageとrealEndの小さい方を設定
+        }
+
+        // 前後ボタンの有無を設定
+        this.preview = this.startPage > 1;
+        this.next = this.endPage < realEnd;
+    }
+}
+```
+- ページングのロジックのdto
+
+##
+     
+### 2. 게시물 리스트
+  
+<img src="https://github.com/leewoosang-hub/ohpizza/blob/main/image/boardList_before.PNG">
+  
+- BEFORE
+     
+<img src="https://github.com/leewoosang-hub/ohpizza/blob/main/image/boardList_after.PNG">
+
+ - AFTER
+
+1. CSS 개선 - 참고 모델과 유사하게 CSS를 구현하였습니다.
+2. 마우스 호버링 추가 - 마우스 호버링 CSS를 추가하여 직관성을 높혔습니다.
+3. 상세 페이지 이동 방식 개선 - 제목에 직접 링크를 걸지 않고, TR 전체에 클릭 이벤트를 추가하였습니다.
+4. ログイン中のセッションの投稿 - 비동기 처리로 로그인 중인 세션의 글만 출력하는 이벤트를 추가했습니다.
+
+
+##
+
+
+###  3. 게시물 상세
+
+  7. 수정폼
 
 
 ## ❓ 問い合わせ
 
   1. 게시판과 문의는 같은 테이블을 사용했습니다.
   
+##
 
 ### 参考サイト
 
