@@ -3,11 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link href="css/allMarginPadding.css" rel="stylesheet" />
 
+
 <script src="https://code.jquery.com/jquery-3.7.1.js"
 	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 	crossorigin="anonymous">
-	
 </script>
+
+<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <style>
 html, body {
@@ -114,7 +116,7 @@ footer {
 								<td class="col-sm-6 title">${board.boardTitle }</td>
 								<td>${board.memId }</td>
 								<td>${board.boardView }</td>
-								<td>${board.boardDate() }</td>
+								<td><fmt:formatDate pattern = "yyyy-MM-dd" value="${board.boardDate}"/></td>
 								<td><c:choose>
 										<c:when test="${logId == board.memId }">
 											<a href="removeBoard.do?boardNo=${board.boardNo }">
