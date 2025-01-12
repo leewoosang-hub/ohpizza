@@ -45,7 +45,7 @@ public class PageDTO {
 
 ##
      
-### 2. 게시물 리스트
+### 2. 投稿リスト
   
 <img src="https://github.com/leewoosang-hub/ohpizza/blob/main/image/boardList_before.PNG">
   
@@ -56,8 +56,8 @@ public class PageDTO {
  - AFTER
 
 1. CSS改善 - 参考モデルに近い形でCSSを実装しました。
-2. 마우스 호버링 추가 - 마우스 호버링 CSS를 추가하여 직관성을 높혔습니다.
-3. 상세 페이지 이동 방식 개선 - 제목에 직접 링크를 걸지 않고, TR 전체에 클릭 이벤트를 추가하였습니다.
+2. マウスホバーを追加 - マウスホバーのCSSを追加し、直感性を向上させました。
+3. 詳細ページへの移動方法を改善 - タイトルに直接リンクを設定せず、TR全体にクリックイベントを追加しました。
 
 ```
  const boardTr = document.querySelectorAll("tbody > tr"); // trを指定
@@ -72,7 +72,7 @@ boardTr.forEach((tr) => {
 });
 ```
    
-4. ログイン中のセッションの投稿 - 비동기 처리로 로그인 중인 세션의 글만 출력하는 이벤트를 추가했습니다.
+4. ログイン中のセッションの投稿 - 非同期処理でログイン中のセッションの投稿のみを出力するイベントを追加しました。
    
 <img src="https://github.com/leewoosang-hub/ohpizza/blob/main/image/myBoardList_button.PNG">
 
@@ -217,11 +217,6 @@ function updateBoardList(boardList) {
 - JSで動的に要素を生成しました。
 
 ##
-
-
-###  3. 게시물 상세
-
-  7. 수정폼
 
 
 ### 参考サイト
